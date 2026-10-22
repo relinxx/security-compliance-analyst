@@ -27,4 +27,17 @@ if st.button("Assess"):
         st.error(f"Assessment failed: {e}")
         st.stop()
 
-    
+    st.subheader("1. Facts")
+    st.json(facts.model_dump(exclude={"plan"}))
+    st.subheader("2. Plan")
+    st.write(f"Proposed: {facts.plan} | Blocked: {rejected} | Added by policy: {added}")
+    st.subheader(f"3. Risk tier: {tier}")
+    st.write(reasons, sensitive)
+    st.subheader("4. Assessment")
+    st.dataframe([r.model_dump() for r in result.results])
+    st.subheader("5. Gaps")
+    st.write(result.gaps)
+    st.subheader("6. Recommendations")
+    st.write(result.recommendations)
+    if needs_human_review(result, tier):
+        st.error("Human review required (AI-003 / AI-008).")
