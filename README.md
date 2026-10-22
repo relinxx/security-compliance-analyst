@@ -5,7 +5,7 @@ Checks an AI use case against rules AI-001 to AI-008 and shows the result with p
 ## How it works
 
 1. AI pulls the key facts from the use case.
-2. AI picks tools to run. Only approved tools are allowed.
+2. AI suggests a plan of tools. Code checks it against an approved list and always runs the required tools.
 3. Code finds sensitive data and sets a risk level.
 4. AI rates each rule and quotes the use case as proof. Code checks the quote is real.
 5. App shows gaps, actions, and flags high-risk cases for human review.
