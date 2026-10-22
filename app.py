@@ -1,4 +1,5 @@
 import streamlit as st
+from tools import detect_sensitive_data, classify_risk_tier
 
 SAMPLES = {
     "A: Customer Support Assistant": "A customer support team wants to use an LLM to summarize customer conversations and suggest responses to support agents. The system will process customer names, account information, support tickets, and conversation history. A human support agent will review the generated response before sending it to the customer. The application will use a third-party hosted LLM API.",
@@ -13,5 +14,18 @@ choice = st.selectbox("Load a sample use case", ["(write my own)"] + list(SAMPLE
 default = SAMPLES.get(choice, "")
 text = st.text_area("Use case description", value=default, height=180)
 
+
 if st.button("Assess"):
-    st.write("Assessment will appear here.")
+    sensitive = detect_sensitive_data(text)
+    tier, reasons = classify_risk_tier(text, sensitive)
+
+    st.subheader(f"Risk tier: {tier}")
+    for r in reasons:
+        st.write("- " + r)
+
+    st.subheader("Sensitive data detected")
+    if sensitive:
+        for category, hits in sensitive.items():
+            st.write(f"- **{category}**: {', '.join(hits)}")
+    else:
+        st.write("None detected.")
