@@ -6,6 +6,12 @@ __pycache__/
 # C extensions
 *.so
 
+#on my computer, I havee a virtual environment in the .venv directory. It is recommended not to include this directory in version control.
+.venv/
+.env
+__pycache__/
+logs/
+
 # Distribution / packaging
 .Python
 build/
