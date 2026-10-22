@@ -1,0 +1,10 @@
+[
+  {"id": "AI-001", "text": "AI applications must have an identified business owner."},
+  {"id": "AI-002", "text": "Sensitive or confidential information must not be submitted to an AI system without appropriate controls."},
+  {"id": "AI-003", "text": "AI-generated outputs used for business decisions must have appropriate human oversight."},
+  {"id": "AI-004", "text": "AI applications must maintain appropriate logging and monitoring."},
+  {"id": "AI-005", "text": "AI applications must have defined access controls."},
+  {"id": "AI-006", "text": "Third-party AI models and services must undergo appropriate security assessment."},
+  {"id": "AI-007", "text": "AI applications must have documented intended use and limitations."},
+  {"id": "AI-008", "text": "High-risk AI use cases must undergo additional review before deployment."}
+]
