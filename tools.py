@@ -15,7 +15,6 @@ def get_requirements():
 
 
 def detect_sensitive_data(text):
-    """Return each sensitive category with the words that triggered it."""
     lower = text.lower()
     found = {}
     for category, terms in SENSITIVE_TERMS.items():
@@ -26,7 +25,6 @@ def detect_sensitive_data(text):
 
 
 def classify_risk_tier(text, sensitive):
-    """Simple, explainable rules. Returns (tier, reasons)."""
     lower = text.lower()
     reasons = []
     affects_people = "HR / employee data" in sensitive and ("promotion" in lower or "decision" in lower)
