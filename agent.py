@@ -42,7 +42,6 @@ def assess(text, risk_tier):
 
 
 def verify_evidence(assessment, text):
-    """Guardrail: keep only real rule ids, and reject quotes that are not in the use case."""
     valid_ids = {r["id"] for r in get_requirements()}
     kept = []
     for r in assessment.results:
@@ -58,7 +57,6 @@ def verify_evidence(assessment, text):
 
 
 def needs_human_review(assessment, risk_tier):
-    """AI-008: high-risk cases, or failures on key rules, must go to a person."""
     key_failures = [r.rule_id for r in assessment.results
                     if r.rule_id in {"AI-002", "AI-003", "AI-008"} and r.status == "Not met"]
     return risk_tier == "High" or bool(key_failures)
